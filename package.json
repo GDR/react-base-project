@@ -1,0 +1,63 @@
+{
+  "name": "react-base-project",
+  "version": "0.0.1",
+  "description": "Base project for react w/ typescript and other stuff",
+  "main": "index.js",
+  "scripts": {
+    "serve": "parcel ./src/index.html --port 8080",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tslint": "eslint ./src/**/*.ts ./src/**/*.tsx",
+    "prettify": "prettier --write ./src/**/*.{ts,tsx,scss}",
+    "stylelint": "stylelint --syntax scss ./src/**/*.scss"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GDR/react-base-project.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "Damir Garifullin <gosugdr@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GDR/react-base-project/issues"
+  },
+  "homepage": "https://github.com/GDR/react-base-project#readme",
+  "dependencies": {
+    "i18next": "^17.0.4",
+    "normalize-scss": "^7.0.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-i18next": "^10.11.2",
+    "react-redux": "^7.1.0",
+    "react-router": "^5.0.1",
+    "react-router-dom": "^5.0.1",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.8.22",
+    "@types/react-dom": "^16.8.4",
+    "@types/react-redux": "^7.1.0",
+    "@types/react-router": "^5.0.2",
+    "@types/react-router-dom": "^4.3.4",
+    "@types/redux": "^3.6.0",
+    "@typescript-eslint/eslint-plugin": "^1.11.0",
+    "@typescript-eslint/parser": "^1.11.0",
+    "autoprefixer": "^9.6.0",
+    "eslint": "^6.0.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.2",
+    "lost": "^8.3.1",
+    "parcel": "^1.12.3",
+    "postcss-modules": "^1.4.1",
+    "postcss-plugin": "^1.0.0",
+    "prettier": "^1.18.2",
+    "sass": "^1.22.0",
+    "stylelint": "^10.1.0",
+    "stylelint-config-sass-guidelines": "^6.0.0",
+    "stylelint-scss": "^3.8.0",
+    "typescript": "^3.5.2"
+  }
+}
