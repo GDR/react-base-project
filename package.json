@@ -8,10 +8,12 @@
     "build": "npm run clean && parcel build ./src/index.html --no-source-maps",
     "serve": "parcel ./src/index.html --port 8080",
     "test": "jest",
-    "test:watch": "jest --watch",
+    "test:watch": "jest",
     "tslint": "eslint ./src/**/*.ts ./src/**/*.tsx",
+    "tslint:report": "eslint ./src/**/*.ts ./src/**/*.tsx -f junit -o ./reports/tslint.report.xml",
     "prettify": "prettier --write ./src/**/*.{ts,tsx,scss}",
-    "stylelint": "stylelint --syntax scss ./src/**/*.scss"
+    "stylelint": "stylelint \"./src/**/*.scss\"",
+    "stylelint:report": "node ./scripts/stylelint"
   },
   "pre-commit": [
     "stylelint",
@@ -60,6 +62,7 @@
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.14.2",
     "jest": "^24.8.0",
+    "jest-junit": "^6.4.0",
     "lost": "^8.3.1",
     "parcel": "^1.12.3",
     "postcss-modules": "^1.4.1",
@@ -69,7 +72,11 @@
     "sass": "^1.22.0",
     "stylelint": "^10.1.0",
     "stylelint-config-sass-guidelines": "^6.0.0",
+    "stylelint-junit-formatter": "^0.2.1",
     "stylelint-scss": "^3.8.0",
     "typescript": "^3.5.2"
+  },
+  "jset-junit": {
+    "outputDirectory": "./test-report"
   }
 }

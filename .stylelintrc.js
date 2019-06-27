@@ -5,6 +5,22 @@ module.exports = {
   ],
   "rules": {
     "string-quotes": "double",
+    "property-no-unknown": [
+      true,
+      {
+        ignoreProperties: [
+          "/^lost-/"
+        ]
+      }
+    ],
+    "scss/at-rule-no-unknown": [
+      true,
+      {
+        ignoreAtRules: [
+          "lost"
+        ]
+      }
+    ],
     "selector-pseudo-class-no-unknown": [true, {
       "ignorePseudoClasses": ["global"]
     }]

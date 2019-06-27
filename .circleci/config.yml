@@ -1,0 +1,83 @@
+version: 2
+jobs:
+  prepare:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+      - run: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - persist_to_workspace:
+          root: .
+          paths:
+            - node_modules
+  build:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: npm run build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - dist
+      - store_artifacts:
+          path: ./dist
+  tslint:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: npm run tslint:report
+      - store_test_results:
+          path: ./reports
+  stylelint:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: npm run stylelint:report
+      - store_test_results:
+          path: ./reports
+  test:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: npm run test
+      - store_test_results:
+          path: ./reports
+
+workflows:
+  version: 2
+  build_accept:
+    jobs:
+      - prepare
+      - tslint:
+          requires:
+            - prepare
+      - stylelint:
+          requires:
+            - prepare
+      - test:
+          requires:
+            - prepare
+      - build:
+          requires:
+            - tslint
+            - stylelint
+            - test

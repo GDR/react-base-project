@@ -160,6 +160,9 @@ typings/
 # Output of 'npm pack'
 *.tgz
 
+# Test reports files
+reports/
+
 # Yarn Integrity file
 .yarn-integrity
 
